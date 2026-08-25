@@ -7,13 +7,37 @@ namespace OOP05
         static void Main(string[] args)
         {
             #region Question01
-            // (A) When you assign one object variable to another, both variables refer to the same object in memory.
+// (A) When you assign one object variable to another, both variables refer to the same object in memory.
 
-            // (B) No. Assigning one object variable to another does not create a new object. It only copies the reference to the existing object.
+// (B) No. Assigning one object variable to another does not create a new object. It only copies the reference to the existing object.
 
-            // (C) Copying the reference: Both variables point to the same object. Changing the object through one variable affects the other.
-           //     Copying the object: A new, separate object is created with the same data.Changing one object does not affect the other.
-            #endregion
-        }
-    }
+// (C) Copying the reference: Both variables point to the same object. Changing the object through one variable affects the other.
+//     Copying the object: A new, separate object is created with the same data.Changing one object does not affect the other.
+#endregion
+
+
+#region Question02
+// (A) A Shallow Copy creates a new object, but it copies the values of the fields directly. For reference-type fields, it copies the reference, not the actual object.
+
+// (B) A Deep Copy creates a new object and also creates new copies of all referenced objects inside it. The original and copied objects are completely independent.
+
+/* (C) The reference is copied, so both the original and copied objects point to the same referenced object.
+  Therefore, changing the referenced object through one copy will affect the other.
+*/
+
+/* (D) The reference is copied, so both the original and copied objects point to the same referenced object.
+ The referenced objects are also copied into new objects. Each object has its own independent reference.
+
+ Therefore, changing a referenced object in one copy does not affect the other.
+ */
+
+/* (E)
+ * Deep Copy is safer when you need to modify a copied object without affecting the original.
+
+Example: If you copy a customer's profile and want to edit the copy before saving it, a Deep Copy prevents changes to the copied profile from modifying the original profile.
+*/
+#endregion
+
+}
+}
 }
