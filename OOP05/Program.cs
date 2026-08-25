@@ -2,10 +2,11 @@
 
 namespace OOP05
 {
-    class Program
+    public class Program
     {
-        static void Main(string[] args)
+        public static void Main()
         {
+
             #region Question01
             // (A) When you assign one object variable to another, both variables refer to the same object in memory.
 
@@ -75,7 +76,7 @@ namespace OOP05
 
             #region Question05
             // (A)A Partial Class is a class that can be divided into multiple files. The compiler combines all parts into one class during compilation.
-            
+
             /* (B) A developer may split a class into multiple files to:
 
                    Keep the code organized.
@@ -85,13 +86,159 @@ namespace OOP05
             */
 
             // (C) A Partial Method is a method that is declared in one part of a partial class and can be implemented in another part of the same class.
-            
+
             /* (D) Partial Class → one class split into multiple files.
                    Partial Method → method declaration and optional implementation can be in different parts.
                    No implementation → the method is removed by the compiler.
             */
             #endregion
 
+            #region Part 02 — Practical
+            /*
+                        DeliveryUtilities.PrintSystemTitle();
+                            Console.WriteLine();
+
+                            int trigger = Shipment.GetTotalShipmentsCreated();
+                            Console.WriteLine();
+
+                            DeliveryUtilities.PrintSeparator();
+                            Console.WriteLine("Creating Shipments...");
+                            DeliveryUtilities.PrintSeparator();
+                            Console.WriteLine();
+
+                            var address1 = new DeliveryAddress("Tahrir St", "Cairo", "Egypt");
+                            var address2 = new DeliveryAddress("Corniche Rd", "Cairo", "Egypt");
+                            var address3 = new DeliveryAddress("Main St", "Cairo", "Egypt");
+
+                            Shipment shipment1 = new StandardShipment("SH001", "Books", 3m, 20m, address1);
+                            Shipment shipment2 = new ExpressShipment("SH002", "Electronics", 2m, 30m, address2, 15m);
+                            Shipment shipment3 = new InternationalShipment("SH003", "Machinery", 8m, 50m, address3);
+                            Console.WriteLine();
+
+                            Console.WriteLine($"Total Shipments Created : {Shipment.GetTotalShipmentsCreated()}");
+                            Console.WriteLine();
+
+                            DeliveryUtilities.PrintSeparator();
+                            Console.WriteLine("Object Copying");
+                            DeliveryUtilities.PrintSeparator();
+                            Console.WriteLine();
+
+                            Shipment shipmentAssigned = shipment1;
+                            Console.WriteLine($"Original Shipment  : {shipment1.TrackingCode}");
+                            Console.WriteLine($"Assigned Shipment  : {shipmentAssigned.TrackingCode}");
+                            Console.WriteLine();
+                            Console.WriteLine($"Same Object : {ReferenceEquals(shipment1, shipmentAssigned)}");
+                            Console.WriteLine();
+
+                            DeliveryUtilities.PrintDashSeparator();
+                            Console.WriteLine("Shallow Copy");
+                            DeliveryUtilities.PrintDashSeparator();
+                            Console.WriteLine();
+
+                            Shipment shallowCopy = shipment1.ShallowCopy();
+                            Console.WriteLine($"Original Shipment Address : {shipment1.Destination.City}");
+                            Console.WriteLine($"Copied Shipment Address   : {shallowCopy.Destination.City}");
+                            Console.WriteLine();
+                            Console.WriteLine("Changing copied shipment address...");
+                            Console.WriteLine();
+                            shallowCopy.Destination.City = "Giza";
+                            Console.WriteLine($"Original Shipment Address : {shipment1.Destination.City}");
+                            Console.WriteLine($"Copied Shipment Address   : {shallowCopy.Destination.City}");
+                            Console.WriteLine();
+                            Console.WriteLine($"Same DeliveryAddress Object : {ReferenceEquals(shipment1.Destination, shallowCopy.Destination)}");
+                            Console.WriteLine();
+
+                            shipment1.Destination.City = "Cairo";
+
+                            DeliveryUtilities.PrintDashSeparator();
+                            Console.WriteLine("Deep Copy");
+                            DeliveryUtilities.PrintDashSeparator();
+                            Console.WriteLine();
+
+                            Shipment deepCopy = shipment1.DeepCopy();
+                            Console.WriteLine($"Original Shipment Address : {shipment1.Destination.City}");
+                            Console.WriteLine($"Copied Shipment Address   : {deepCopy.Destination.City}");
+                            Console.WriteLine();
+                            Console.WriteLine("Changing copied shipment address...");
+                            Console.WriteLine();
+                            deepCopy.Destination.City = "Giza";
+                            Console.WriteLine($"Original Shipment Address : {shipment1.Destination.City}");
+                            Console.WriteLine($"Copied Shipment Address   : {deepCopy.Destination.City}");
+                            Console.WriteLine();
+                            Console.WriteLine($"Same DeliveryAddress Object : {ReferenceEquals(shipment1.Destination, deepCopy.Destination)}");
+                            Console.WriteLine();
+
+                            DeliveryUtilities.PrintSeparator();
+                            Console.WriteLine("Extension Methods");
+                            DeliveryUtilities.PrintSeparator();
+                            Console.WriteLine();
+
+                            Console.WriteLine(shipment1.GetSummary());
+                            Console.WriteLine(shipment2.GetSummary());
+                            Console.WriteLine(shipment3.GetSummary());
+                            Console.WriteLine();
+
+                            Console.WriteLine($"SH001 Is Delivered : {shipment1.IsDelivered()}");
+                            Console.WriteLine($"SH003 Is Delivered : {shipment3.IsDelivered()}");
+                            Console.WriteLine();
+
+                            DeliveryUtilities.PrintSeparator();
+                            Console.WriteLine("Tracking Status");
+                            DeliveryUtilities.PrintSeparator();
+                            Console.WriteLine();
+
+                            shipment2.UpdateTrackingStatus("Out For Delivery");
+                            Console.WriteLine();
+
+                            DeliveryUtilities.PrintSeparator();
+                            Console.WriteLine("Static Utilities");
+                            DeliveryUtilities.PrintSeparator();
+                            Console.WriteLine();
+
+                            DeliveryUtilities.PrintDashSeparator();
+                            Console.WriteLine("Delivery Center");
+                            DeliveryUtilities.PrintDashSeparator();
+                            Console.WriteLine();
+
+                            Console.WriteLine($"Total Shipments Created : {Shipment.GetTotalShipmentsCreated()}");
+                            Console.WriteLine();
+
+                            DeliveryUtilities.PrintSeparator();
+                            Console.WriteLine("Partial Method");
+                            DeliveryUtilities.PrintSeparator();
+                            Console.WriteLine();
+
+                            shipment3.UpdateTrackingStatus("Delivered");
+                            Console.WriteLine();
+
+                            DeliveryUtilities.PrintSeparator();
+                            Console.WriteLine("Assignment 04 Functionality Check");
+                            DeliveryUtilities.PrintSeparator();
+                            Console.WriteLine();
+
+                            var center = new DeliveryCenter();
+                            center.AddShipment(shipment1);
+                            center.AddShipment(shipment2);
+                            center.AddShipment(shipment3);
+
+                            center.PrintAllShipments();
+                            center.PrintTrackingStatuses();
+                            Console.WriteLine();
+
+                            DeliveryReport.PrintInsurance((IInsurable)shipment1);
+                            DeliveryReport.PrintInsurance((IInsurable)shipment2);
+                            DeliveryReport.PrintInsurance((IInsurable)shipment3);
+                            Console.WriteLine();
+
+                            DeliveryUtilities.PrintSeparator();
+                            Console.WriteLine("Assignment Completed");
+                            DeliveryUtilities.PrintSeparator();
+                        }
+            */
         }
+
+        #endregion
+
     }
 }
+    
