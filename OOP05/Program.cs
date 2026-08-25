@@ -73,6 +73,25 @@ namespace OOP05
 
             #endregion
 
+            #region Question05
+            // (A)A Partial Class is a class that can be divided into multiple files. The compiler combines all parts into one class during compilation.
+            
+            /* (B) A developer may split a class into multiple files to:
+
+                   Keep the code organized.
+                   Make large classes easier to manage.
+                   Allow multiple developers to work on different parts.
+                   Separate generated code from manually written code.
+            */
+
+            // (C) A Partial Method is a method that is declared in one part of a partial class and can be implemented in another part of the same class.
+            
+            /* (D) Partial Class → one class split into multiple files.
+                   Partial Method → method declaration and optional implementation can be in different parts.
+                   No implementation → the method is removed by the compiler.
+            */
+            #endregion
+
         }
     }
 }
