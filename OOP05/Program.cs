@@ -15,7 +15,6 @@ namespace OOP05
             //     Copying the object: A new, separate object is created with the same data.Changing one object does not affect the other.
             #endregion
 
-
             #region Question02
             // (A) A Shallow Copy creates a new object, but it copies the values of the fields directly. For reference-type fields, it copies the reference, not the actual object.
 
@@ -37,7 +36,6 @@ namespace OOP05
             Example: If you copy a customer's profile and want to edit the copy before saving it, a Deep Copy prevents changes to the copied profile from modifying the original profile.
             */
             #endregion
-
 
             #region Question03
             /* (A) A static field belongs to the class itself, not to a specific object. There is only one shared copy of a static field.
@@ -61,7 +59,18 @@ namespace OOP05
 
                    So, No, you cannot create an object from a static class.
             */
-            
+
+            #endregion
+
+            #region Question04
+            // (A) An Extension Method is a method that allows you to add new functionality to an existing class or type without modifying its original source code.
+
+            // (B) The this keyword must be used with the first parameter.
+
+            // (C) An extension method must be declared inside a static class, and the method itself must also be static.
+
+            // (D) No. An extension method cannot directly access the private members of the class it extends. It can only access members that are accessible to it, such as public members.
+
             #endregion
 
         }
